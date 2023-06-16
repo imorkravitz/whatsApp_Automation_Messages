@@ -16,32 +16,32 @@ logging.basicConfig(level=logging.INFO)
 
 # Set up Google Sheets API credentials
 scope = ['https://www.googleapis.com/auth/spreadsheets']
-credentials = ServiceAccountCredentials.from_json_keyfile_name('/Users/orkravitz/Downloads/liveatBussinesWhatsApp/credentials.json', scope)
+credentials = ServiceAccountCredentials.from_json_keyfile_name('/Users/...credentials.json', scope)
 client = gspread.authorize(credentials)
 
 # Open the Google Sheets workbook
-spreadsheet = client.open_by_key('1JDEKJdbeIlc7EE9-JQ4icezJ5n6-zhK7UtufTtApHC8')
+spreadsheet = client.open_by_key('....')
 
 # Select the appropriate sheet within the workbook
-worksheet = spreadsheet.worksheet('Liveat')
+worksheet = spreadsheet.worksheet('[name of the sheet]')
 
-survey_link = "https://bit.ly/3q5j7OO"
+survey_link = "[link]"
 message_lines = [
-    "הי ☺️ זאת קים",
-    "בגלל שאתם כבר חלק מהמשפחה, חשוב לנו לתת לכם את השירות הטוב ביותר! ❤️",
     " ",
-    "שמנו לנו למטרה לשפר ולהשתפר כל הזמן עבורכם וחשוב לנו לשמוע את דעתכם.",
     " ",
-    "נשמח אם תקדישו 2 דקות מזמנכם (ולא יותר) כדי לענות על סקר קצרצר שיעזור לנו לתת לכם יותר. תודה!",
+    " ",
+    " ",
+    " ",
+    " ",
     survey_link
 ]
 
 # Set up Chrome profile directory
 chrome_options = Options()
-chrome_options.add_argument("--user-data-dir=/Users/orkravitz/Library/Application Support/Google/Chrome/Default")
+chrome_options.add_argument("--user-data-dir=/Users/.../Library/Application Support/Google/Chrome/Default")
 
 # Set the path to the ChromeDriver executable
-chromedriver_path = '/Users/orkravitz/Downloads/liveatBussinesWhatsApp/chromedriver'
+chromedriver_path = '/Users/.../chromedriver'
 webdriver_service = Service(chromedriver_path)
 
 # Pass the options and service to the ChromeDriver
@@ -118,7 +118,7 @@ try:
     driver.get('https://web.whatsapp.com')
     logging.info("Opened WhatsApp Web")
 
-    worksheet = spreadsheet.worksheet("Liveat")
+    worksheet = spreadsheet.worksheet("...")
     data = worksheet.get_all_values()
 
     for row in data[8:]:
